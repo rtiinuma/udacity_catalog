@@ -343,6 +343,16 @@ def gdisconnect():
         flash("You have successfully been logged out.")
         return redirect(url_for('showRestaurants'))
     else:
+        if login_session['access_token']:
+            del login_session['access_token']
+        if login_session['gplus_id']:
+            del login_session['gplus_id']
+        if login_session['username']:
+            del login_session['username']
+        if login_session['email']:
+            del login_session['email']
+        if login_session['picture']:
+            del login_session['picture']
         flash("You were not logged in")
         return redirect(url_for('showRestaurants'))
 
